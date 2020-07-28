@@ -1,13 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../constants/routes.json';
+/* eslint-disable jsx-a11y/media-has-caption */
+import React, { useRef, useEffect } from 'react';
+import Hls from 'hls.js';
 import styles from './Home.css';
 
 export default function Home(): JSX.Element {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const initPlayer = () => {};
+
+  const hlsPlayer = () => {
+    const videoSrc = 'http://117.169.120.140:8080/live/cctv-1/.m3u8';
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(videoRef.current as HTMLVideoElement);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (videoRef && videoRef.current) {
+          videoRef.current.play();
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    initPlayer();
+    hlsPlayer();
+  }, []);
+
   return (
-    <div className={styles.container} data-tid="container">
-      <h2>Home</h2>
-      <Link to={routes.COUNTER}>to Counter</Link>
+    <div className={styles.container}>
+      <video controls ref={videoRef} />
     </div>
   );
 }
