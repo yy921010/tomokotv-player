@@ -19,6 +19,9 @@ export default function Home(): JSX.Element {
           videoRef.current.play();
         }
       });
+      hls.on(Hls.Events.ERROR, () => {
+        console.log('ssss');
+      });
     }
   };
 
