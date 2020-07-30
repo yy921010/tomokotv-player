@@ -14,32 +14,11 @@ import path from 'path';
 import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import http from 'http';
-import socketIO from 'socket.io';
-import express from 'express';
 import MenuBuilder from './menu';
+import Communicated from './communication';
 
-const expressApp = express();
-
-const server = http.createServer(expressApp);
-const io = socketIO(server, {
-  path: '/',
-  serveClient: false,
-  // below are engine.IO options
-  pingInterval: 10000,
-  pingTimeout: 5000,
-  cookie: false,
-});
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
-  socket.on('chat message', () => {
-    console.log('22222 message');
-  });
-  socket.emit('hi', 'everyone');
-});
-
-server.listen(3000);
+const communicated = new Communicated();
+communicated.builderBothBridge();
 
 export default class AppUpdater {
   constructor() {
