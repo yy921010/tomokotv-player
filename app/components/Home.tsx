@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect } from 'react';
 import styles from './Home.css';
+import PlayerBar from './PlayerBar';
+import PlayerController from './PlayControl';
 
 export default function Home(): JSX.Element {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -31,7 +33,14 @@ export default function Home(): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <video controls ref={videoRef} />
+      <PlayerBar
+        title="Modern web html5 Video player"
+        subTitle="subtitle test video"
+      />
+      <PlayerController
+        title="Modern web html5 Video player"
+        subTitle="subtitle test video"
+      />
     </div>
   );
 }
