@@ -1,5 +1,5 @@
 .playBar {
-  width: 100%;
+  width: calc(100% - 40px);
   position: absolute;
   z-index: 2;
   height: 120px;
@@ -7,9 +7,20 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
   user-select: none;
   display: flex;
+  justify-content: space-between;
+}
+
+.actions {
+  padding-top: 30px;
 }
 .playerBarClose {
-  font-size: 22px;
+  font-size: 32px;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.playerBarClose:hover {
+  color: #4c4c4c;
 }
 .mainTitle {
   width: 100%;
