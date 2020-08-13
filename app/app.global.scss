@@ -1,0 +1,275 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+      'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:-webkit-full-screen {
+  width: 100%;
+  top: 0;
+  z-index: -100;
+  background: none;
+}
+.controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 90px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+  .top {
+      width: 632px;
+      position: absolute;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .controls-button {
+          position: relative;
+          height: 100%;
+          padding-left: 9px;
+          padding-right: 9px;
+          cursor: pointer;
+          width: 28px;
+          .controls-vol {
+              width: 100%;
+              height: 100%;
+              &:hover {
+                  .controls-vol-level {
+                      pointer-events: all;
+                      .slider-runnable-track {
+                          pointer-events: all;
+                          .slider-background {
+                              pointer-events: all;
+                              height: 100%;
+                              opacity: 1;
+                              transition: height 0.2345s ease-out, opacity 0.0335s ease-out;
+                          }
+                          .slider-thumb-wrapper {
+                              opacity: 1;
+                              pointer-events: all;
+                              transition: height 0.2345s ease-out, opacity 0.0335s ease-out;
+                              .slider-thumb {
+                                  pointer-events: all;
+                                  opacity: 1;
+                                  transform: scale(1);
+                                  -webkit-transition: opacity 0.05025s ease-out 0.05025s,
+                                      -webkit-transform 0.25125s ease-out 0.05025s;
+                                  transition: opacity 0.05025s ease-out 0.05025s,
+                                      -webkit-transform 0.25125s ease-out 0.05025s;
+                                  transition: transform 0.25125s ease-out 0.05025s, opacity 0.05025s ease-out 0.05025s;
+                                  transition: transform 0.25125s ease-out 0.05025s, opacity 0.05025s ease-out 0.05025s,
+                                      -webkit-transform 0.25125s ease-out 0.05025s;
+                              }
+                          }
+                          .slider-inner-track {
+                              pointer-events: all;
+                              opacity: 1;
+                              transition: height 0.2345s ease-out, opacity 0.0335s ease-out;
+                          }
+                      }
+                  }
+              }
+          }
+          .vol-button {
+              height: 40px;
+              padding-left: 9px;
+              padding-right: 9px;
+              margin-left: -9px;
+              margin-right: -9px;
+          }
+          .controls-vol-level {
+              bottom: 35px;
+              left: 7px;
+              width: 4px;
+              padding: 10px 10px 0 10px;
+              height: 60px;
+              position: absolute;
+              .slider-runnable-track {
+                  border-radius: 2px;
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  left: -4px;
+                  padding-left: 4px;
+                  padding-right: 4px;
+                  .slider-background {
+                      background: rgba(255, 255, 255, 0.32);
+                      border-radius: 2px;
+                      height: 0;
+                      opacity: 0;
+                      position: absolute;
+                      bottom: 0;
+                      width: 4px;
+                      transition: height 0.2345s cubic-bezier(0.4, 0, 0.6, 1),
+                          opacity 0.067s cubic-bezier(0.4, 0, 0.6, 1) 0.335s;
+                  }
+                  .slider-thumb-wrapper {
+                      width: 12px;
+                      height: 0;
+                      bottom: 5px;
+                      left: 1px;
+                      position: absolute;
+                      transition: height 0.335s cubic-bezier(0.4, 0, 0.6, 1);
+                      .slider-thumb {
+                          background: #fff;
+                          border-radius: 50%;
+                          height: 10px;
+                          width: 10px;
+                          top: auto;
+                          opacity: 0;
+                          position: absolute;
+                          transform: scale(0.4);
+                          transform-origin: 50% 100%;
+                          transition: opacity 0.067s cubic-bezier(0.4, 0, 0.6, 1) 0.335s,
+                              -webkit-transform 0.201s cubic-bezier(0.4, 0, 0.6, 1) 0.201s;
+                          transition: transform 0.201s cubic-bezier(0.4, 0, 0.6, 1) 0.201s,
+                              opacity 0.067s cubic-bezier(0.4, 0, 0.6, 1) 0.335s;
+                          transition: transform 0.201s cubic-bezier(0.4, 0, 0.6, 1) 0.201s,
+                              opacity 0.067s cubic-bezier(0.4, 0, 0.6, 1) 0.335s,
+                              -webkit-transform 0.201s cubic-bezier(0.4, 0, 0.6, 1) 0.201s;
+                          will-change: transform;
+                      }
+                  }
+                  .slider-inner-track {
+                      border-radius: 2px;
+                      position: absolute;
+                      overflow: hidden;
+                      bottom: 0;
+                      height: 0;
+                      width: 4px;
+                      opacity: 0;
+                      transform-style: preserve-3d;
+                      transition: height 0.335s cubic-bezier(0.4, 0, 0.6, 1),
+                          opacity 0.067s cubic-bezier(0.4, 0, 0.6, 1) 0.335s;
+                      .slider-scrubbed {
+                          background: #fff;
+                          bottom: calc(100% - (10px / 2));
+                          position: absolute;
+                          width: 100%;
+                          height: 100%;
+                          -webkit-transform: translateY(100%);
+                          transform: translateY(100%);
+                          -webkit-transition: margin-bottom 0.335s linear;
+                          transition: margin-bottom 0.335s linear;
+                          will-change: bottom;
+                      }
+                  }
+              }
+          }
+          .controls-vol__down {
+              background-position: 50% 50%;
+              opacity: 0.8;
+              transition: opacity 0.5s ease;
+              background-image: url('./assets/svgs/volume-down-fill.svg');
+              background-repeat: no-repeat;
+          }
+          .controls-vol__up {
+              background-position: 50% 50%;
+              opacity: 0.8;
+              -webkit-transition: opacity 0.5s ease;
+              transition: opacity 0.5s ease;
+              background-image: url('./assets/svgs/volume-up-fill.svg');
+              background-repeat: no-repeat;
+          }
+          .controls-vol__mute {
+              background-position: 50% 50%;
+              opacity: 0.8;
+              -webkit-transition: opacity 0.5s ease;
+              transition: opacity 0.5s ease;
+              background-image: url('./assets/svgs/volume-mute-fill.svg');
+              background-repeat: no-repeat;
+          }
+      }
+      .controls-progress {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 18px;
+          .currentTime {
+              font-size: 11px;
+              color: rgba(255, 255, 255, 0.6);
+              font-weight: 600;
+              font-variant-numeric: tabular-nums;
+              -webkit-font-feature-settings: 'tnum';
+              font-feature-settings: 'tnum';
+              line-height: 1;
+          }
+          .progress {
+              width: 90%;
+              height: 4px;
+              background-color: rgba(0, 0, 0, 0.5);
+              position: relative;
+              margin: 0 10px;
+              flex: 0.9;
+              .jdt {
+                  position: absolute;
+                  height: 4px;
+                  background-color: #e20074;
+                  z-index: 1;
+              }
+              .jdtButton {
+                  height: 10px;
+                  width: 10px;
+                  display: inline-block;
+                  position: absolute;
+                  top: -5px;
+                  left: 0;
+                  background-color: #e20074;
+                  border: 2px solid white;
+                  border-radius: 50%;
+                  z-index: 1;
+              }
+              .bufferJdt {
+                  background-color: rgba(226, 0, 116, 0.45);
+                  height: 4px;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+              }
+          }
+          .duration {
+              font-size: 11px;
+              color: rgba(255, 255, 255, 0.6);
+              font-weight: 600;
+              font-variant-numeric: tabular-nums;
+              -webkit-font-feature-settings: 'tnum';
+              font-feature-settings: 'tnum';
+              line-height: 1;
+          }
+          .live-text {
+              font-size: 11px;
+              color: #e20074;
+              font-weight: 600;
+              font-variant-numeric: tabular-nums;
+              -webkit-font-feature-settings: 'tnum';
+              font-feature-settings: 'tnum';
+              line-height: 1;
+          }
+      }
+      .true-fullscreen {
+          height: 40px;
+          cursor: pointer;
+          background-position: 50% 50%;
+          opacity: 0.7;
+          -webkit-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease;
+          background-image: url('./assets/svgs/fullscreen-exit-line.svg');
+          background-repeat: no-repeat;
+      }
+      .false-fullscreen {
+          cursor: pointer;
+          height: 40px;
+          background-position: 50% 50%;
+          opacity: 0.8;
+          -webkit-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease;
+          background-image: url('./assets/svgs/fullscreen-line.svg');
+          background-repeat: no-repeat;
+      }
+  }
+}
