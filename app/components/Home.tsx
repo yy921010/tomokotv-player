@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useRef, useEffect, useState } from 'react';
 import Hls from 'hls.js';
-import styles from './Home.css';
 import PlayerBar from './PlayerBar';
 import PlayController from './Playcontrol';
 import { isFullscreen, exitFullscreen, enterFullscreen } from '../utils/player';
@@ -67,6 +66,9 @@ export default function Home(): JSX.Element {
                 videoRef.current.buffered.length - 1
               );
               setBuffered(bufferedVal);
+
+              console.log(videoRef.current.videoWidth);
+              console.log(videoRef.current.videoHeight);
             }
           });
         }
@@ -107,14 +109,20 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <div className={styles.container}>
+    <div className="play-container">
       <PlayerBar
         title="Modern web html5 Video player"
         subTitle="subtitle test video"
       />
-      <video ref={videoRef} width="100%" height="100%" />
+      <video
+        className="play-video"
+        ref={videoRef}
+        autoPlay
+        width="100%"
+        height="100%"
+      />
       <PlayController
-        isLive={false}
+        isLive
         isFullscreen={isFullscreen()}
         currentTime={currentTime}
         duration={duration}
